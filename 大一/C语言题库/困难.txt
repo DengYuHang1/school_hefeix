@@ -1,0 +1,1859 @@
+学生成绩管理系统V1.0
+#include<stdio.h>
+#include<stdlib.h>
+#define N 30
+
+main()
+{
+    int n, i, j, temp1, temp2, choice, p, mark;
+    long ids;
+    float sum;
+
+    printf("Input student number(n<30):\n");
+    while (scanf("%d", &n))
+    {
+        if (n < 30 && n > 0)
+            break;
+        else
+        {
+            printf("Invalid Input!");
+            continue;
+        }
+
+    }
+    long id[N];
+    float score[N];
+
+Choice:
+    printf("Management for Students' scores\n");
+    printf("1.Input record\n");
+    printf("2.Caculate total and average score of course\n");
+    printf("3.Sort in descending order by score\n");
+    printf("4.Sort in ascending order by number\n");
+    printf("5.Search by number\n");
+    printf("6.Statistic analysis\n");
+    printf("7.List record\n");
+    printf("0.Exit\n");
+    printf("Please Input your choice:\n");
+
+    scanf("%d", &choice);
+    getchar();
+
+    switch (choice)
+    {
+    case 1:
+        goto a;
+    case 2:
+        goto b;
+    case 3:
+        goto c;
+    case 4:
+        goto d;
+    case 5:
+        goto e;
+    case 6:
+        goto f;
+    case 7:
+        goto g;
+    case 0:
+        goto end;
+    default:
+        printf("Input error!\n");
+        goto Choice;
+    }
+
+a:
+    printf("Input student's ID, name and score:\n");
+    for (i = 1; i <= n; i++)
+    {
+        scanf("%ld %f", &id[i], &score[i]);
+        getchar();
+    }
+    goto Choice;
+
+b:
+    sum = 0;
+    for (i = 1; i <= n; i++)
+        sum = sum + score[i];
+    printf("sum=%.0f,aver=%.2f\n", sum, sum / n);
+    goto Choice;
+
+c:
+    printf("Sort in descending order by score:\n");
+    for (i = 1; i < n; i++)
+        for (j = i + 1; j <= n; j++)
+            if (score[j] > score[i])
+            {
+                temp1 = score[i], temp2 = id[i];
+                score[i] = score[j], id[i] = id[j];
+                score[j] = temp1, id[j] = temp2;
+            }
+    for (i = 1; i <= n; i++)
+        printf("%ld\t%.0f\n", id[i], score[i]);
+    goto Choice;
+
+d:
+    printf("Sort in ascending order by number:\n");
+    for (i = 1; i < n; i++)
+        for (j = i + 1; j <= n; j++)
+            if (id[i] > id[j])
+            {
+                temp1 = score[i], temp2 = id[i];
+                score[i] = score[j], id[i] = id[j];
+                score[j] = temp1, id[j] = temp2;
+            }
+    for (i = 1; i <= n; i++)
+        printf("%ld\t%.0f\n", id[i], score[i]);
+    goto Choice;
+
+e:
+    printf("Input the number you want to search:\n");
+    scanf("%ld", &ids);
+    getchar();
+    for (i = 1; i <= n; i++)
+    {
+        if (ids == id[i])
+        {
+            printf("%ld\t%.0f\n", id[i], score[i]);
+            goto Choice;
+        }
+        else
+            continue;
+
+    }
+    printf("Not found!\n");
+    goto Choice;
+
+f:
+    for (i = 5; i <= 10; i++)
+    {
+        p = 0;
+        for (j = 1; j <= n; j++)
+        {
+            mark = score[j] < 60 ? 5 : (int)score[j] / 10;
+            if (mark == i)
+                p++;
+        }
+        if (i == 5)
+        {
+            printf("<60\t%d\t%.2f%%\n", p, (float)p / n * 100);
+            continue;
+        }
+        else if (i >= 6 && i <= 9)
+        {
+            printf("%d-%d\t%d\t%.2f%%\n", i * 10, i * 10 + 9, p, (float)p / n * 100);
+            continue;
+        }
+        else
+            printf("%d\t%d\t%.2f%%\n", i * 10, p, (float)p / n * 100);
+    }
+    goto Choice;
+
+g:
+    for (i = 1; i <= n; i++)
+        printf("%ld\t%.0f\n", id[i], score[i]);
+    goto Choice;
+
+end:
+    printf("End of program!\n");
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+编写一个简单的23 根火柴游戏程序，实现人跟计算机玩这个游戏的程序。
+#include <stdio.h>
+int main()
+{
+    printf("这里是23根火柴游戏！！\n注意：最大移动火柴数目为三根\n");
+    int sum = 23;
+    
+    while (1) {
+       
+        
+        printf("请输入您移动的火柴数目：\n");
+        int j,i;
+        scanf("%d",&j);
+        printf("您移动的火柴数目为：%d\n",j);
+        sum-=j;
+        printf("您移动后剩下的火柴数目为：%d\n",sum);
+        if (sum == 0) {
+            printf("对不起！您输了！\n");
+            break;
+        }
+        
+        
+        if(sum>3)
+        {
+            i = sum%3+1;
+            printf("计算机移动的火柴数目为：%d\n",sum%3+1);
+        }
+        else if(sum == 3)
+        {
+            i = 2;
+            printf("计算机移动的火柴数目为：%d\n",i);
+        }
+        else if (sum == 2)
+        {
+            i = 1;
+            printf("计算机移动的火柴数目为：%d\n",i);
+        }
+        else
+        {
+            i = 1;
+            printf("计算机移动的火柴数目为：%d\n",i);
+        }
+        
+        sum-=i;
+        printf("计算机移动后剩下的火柴数目为：%d\n",sum);
+        //在计算机这里结束的情况
+        if (sum == 0) {
+            printf("恭喜您！您赢了！\n");
+            break;
+        }
+        
+    }
+}
+
+
+输入一个字符串保存到数组str中，将str中的数字字符存储到数组tOrigin中，并将其转换为整数输出，用k记录字符串中数字字符的个数。例如：用户输入字符串1243abc3,则将12433取出以整数形式输出。阅读程序，找出其中的错误，并改正之（允许改变数据类型）。
+
+
+写一函数，输入一个十六进制数，输出相应的十进制数。
+程序的运行示例如下：
+输入十六进制数：
+3a
+十进制数58
+继续吗？
+y
+输入十六进制数：
+2f
+十进制数47
+继续吗？
+n
+#include<stdio.h>
+int main()
+{
+	int a1;
+	char a='y';
+	while(a!='n')
+	{
+	printf("输入十六进制数：\n");
+	  //不对  
+	scanf("%x",&a1);		//也可以 
+	printf("十进制数%d\n",a1);
+	printf("继续吗？\n");
+	scanf(" %c",&a);
+    }
+    return 0;
+ } 
+输入3个数x,y,z，按从小到大顺序排序后输出。
+要求：利用指针方法实现两数互换，函数原型为：void swap(int *p1,int *p2);
+输入提示：printf("please input 3 number x,y,z");
+输出格式：printf("the sorted numbers are:%d,%d,%d\n",  );
+#include<stdio.h>
+void swap(int* a,int* b)
+{
+  int t;
+  t=*a;
+  *a=*b;
+  *b=t;
+}
+int main()
+{
+	int a,b,c;
+  printf("please input 3 number x,y,z");
+  scanf("%d,%d,%d",&a,&b,&c);
+  if(a>b) swap(&a,&b);
+  if(a>c) swap(&a,&c);
+  if(b>c) swap(&b,&c);
+  printf("the sorted numbers are:%d,%d,%d\n",a,b,c);
+  return 0;
+}
+对输入的8个字符串(每个字符串长度不超过20)按照字典顺序进行排序并输出。不限定排序方法，不能使用goto语句。
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 8
+#define CMAX 20
+int main()
+{                 
+    char a[MAX][CMAX], term[CMAX];                                   
+    int i, j;
+    for (i = 0; i < 8; i++)
+    {                 
+        scanf("%s", a[i]);                                    
+    }
+ 
+    for (i = 0; i < 8 - 1; i++)                           
+    {                 
+        for (j = 1; j < 8 - i; j++)                   
+        {                 
+            if (strcmp(a[j], a[j - 1]) < 0)                   
+            {                 
+                strcpy(term, a[j]);                             
+                strcpy(a[j], a[j - 1]);                         
+                strcpy(a[j - 1], term);                        
+            }
+        }
+    }
+    for (i = 0; i < 8; i++)
+    {                 
+        printf("%s\n", a[i]);
+    }
+    return 0;
+}
+写一个程序显示如下的金字塔树：
+编写一个程序，将用户输入的由数字字符和非数字字符组成的字符串中的数字提取出来（例如：输入asd123,34fgh_566kkk789，则产生的数字分别是123、34、789）。
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    char str[1000], *p,k=0,i=0,j=0,s;
+    char a[100][100];
+    p = str;
+    printf("Please enter a string:\n");
+    gets(str);
+    for (; *p != '\0'; p++)
+	{
+        if (*p >= '0' && *p <= '9')
+		{
+			a[i][j++]=*p;
+			k=1;
+		 }  else k=0;
+		if(k==1 && (*(p+1)<'0' ||*(p+1)>'9' )   ) 
+		{
+		a[i][j++]='\0';	
+		i++;	
+		j=0;
+		}
+      }        
+      printf("the result of output:\n");
+    for(k=0;k<i;k++)
+    {
+    	s=0;
+    for(j=0;a[k][j]!='\0';j++)
+    s++;
+    for(j=0;j<10-s;j++) printf(" ");
+    for(j=0;a[k][j]!='\0';j++) printf("%c",a[k][j]);
+	 printf("\n");	
+	}
+    return 0;
+}
+黑白子交换。有三个白子和三个黑子如下图布置：(-表示一个空格)
+○	○	○	-	●	●	●
+#include<stdio.h>
+int number;
+void print(int a[]);
+void change(int *n,int *m);
+int main()
+{
+int t[7]={1,1,1,0,2,2,2}; /*初始化数组1：白子 2：黑子 0：空格*/
+int i,flag;
+print(t);
+while(t[0]+t[1]+t[2]!=6||t[4]+t[5]+t[6]!=3) /*判断游戏是否结束
+若还没有完成棋子的交换则继续进行循环*/
+{
+flag=1; /*flag 为棋子移动一步的标记1：尚未移动棋子 0：已经移动棋子*/
+for(i=0;flag&&i<5;i++) /*若白子可以向右跳过黑子，则白子向右跳*/
+if(t[i]==1&&t[i+1]==2&&t[i+2]==0)
+{change(&t[i],&t[i+2]); print(t); flag=0;}
+for(i=0;flag&&i<5;i++) /*若黑子可以向左跳过白子，则黑子向左跳*/
+if(t[i]==0&&t[i+1]==1&&t[i+2]==2)
+{change(&t[i],&t[i+2]); print(t); flag=0;}
+for(i=0;flag&&i<6;i++) /*若向右移动白子不会产生阻塞,则白子向右移动*/
+if(t[i]==1&&t[i+1]==0&&(i==0||t[i-1]!=t[i+2]))
+{change(&t[i],&t[i+1]); print(t);flag=0;}
+for(i=0;flag&&i<6;i++) /*若向左移动黑子不会产生阻塞，则黑子向左移动*/
+if(t[i]==0&&t[i+1]==2&&(i==5||t[i-1]!=t[i+2]))
+{ change(&t[i],&t[i+1]); print(t);flag=0;}
+}
+}
+void print(int a[])
+{
+int i;
+
+if(number<=9) printf("No. %d:-----------\n",number++);
+ else printf("No.%d:-----------\n",number++);
+printf("      ");
+for(i=0;i<=6;i++)
+{
+printf("|%c",a[i]==1?'*':(a[i]==2?'@':' '));	
+}
+
+printf("|\n    -----------\n");
+}
+void change(int *n,int *m)
+{
+int term;
+term=*n; *n=*m; *m=term;
+}
+程序中函数 fun()的功能: 将一个由八进制数字字符组成的字符串转换为与其值相等的十进制整数。规定输入的字符串最多只能包含5位八进制数字字符。
+**输入格式要求："%d" 提示信息："输入一个八进制字符串（5位）:" "错误：字符串太长\n\n" "错误:%c 不是一个八进制字符\n\n"
+**输出格式要求："输入的八进制字符串为" "\n%s 转换成十进制整数为：%d\n"
+程序运行示例如下：
+输入一个八进制字符串（5位）:234
+输入的八进制字符串为234
+234 转换成十进制整数为：156
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int i = 1;
+void fun(char* a,long len)//将一个由八进制数字字符组成的字符串转换为与其值相等的十进制整数
+{
+    static int num = 0;//静态局部变量
+    long j;
+    for(j = 0;j != len;j++)
+    {
+        num += ((*(a+j)-48) * pow(8,len-j-1));
+        //        这是一个字符，需要进行转换才是int型数字
+    }
+    printf("\n\n%s 转换成十进制整数为：%d\n",a,num);
+}
+int main ( )
+{char a [10];
+long j;
+    printf("输入一个八进制字符串（5位）:");
+    
+    gets(a);
+    
+    if (strlen(a) > 5) {
+        printf("错误：字符串太长\n\n");
+    }
+    
+    for(j = strlen(a) - 1;j != 0;j--)
+     if (!(*(a+j) < '8' && '0' <= *(a+j))) {
+         printf("错误:%c 不是一个八进制字符\n\n",*(a+j));
+    }
+    
+    printf("输入的八进制字符串为%s",a);
+    fun(a,strlen(a));
+}
+
+T-primes
+
+time limit per test2 seconds
+
+memory limit per test256 megabytes
+
+inputstandard input
+
+outputstandard output
+
+    We know that prime numbers are positive integers that have exactly two 
+
+distinct positive divisors. Similarly, we'll call a positive integer t Т-prime, 
+
+if t has exactly three distinct positive divisors.
+
+You are given an array of n positive integers. For each of them determine
+
+  whether it is Т-prime or not.
+
+Input
+
+The first line contains a single positive integer, n (1≤n≤10^5), showing
+
+how many numbers are in the array. The next line contains n space-separated
+
+integers xi (1≤xi≤10^12).
+
+Please, do not use the %lld specifier to read or write 64bit integers in С++. It is advised to use the cin, cout streams or the %I64d specifier.
+
+Output
+
+Print n lines: the i-th line should contain "YES" (without the quotes), if
+
+number xi is Т-prime, and "NO" (without the quotes), if it isn't.
+
+Sample test(s)
+
+input
+
+3
+
+4 5 6
+
+output
+
+YES
+
+NO
+
+NO
+
+Note
+
+The given test has three numbers. The first number 4 has exactly three di
+
+visors — 1, 2 and 4, thus the answer for this number is "YES". The second 
+
+number 5 has two divisors (1 and 5), and the third number 6 has four divi
+
+sors (1, 2, 3, 6), hence the answer for them is "NO".
+#include<stdio.h>
+#define LL long long
+#define Max 1001005
+#define Mod 1e9+7
+const LL mod=1e9+7;
+const LL inf=0x3f3f3f3f;
+int prime[Max];
+int prim[Max];
+void prim_from()//素数打表
+{
+    int counts=0,i,j;
+    memset(prim,1,sizeof(prim));
+    prim[0]=prim[1]=0;
+    for(i=2; i<=Max; i++)
+    {
+        if(prim[i])
+            prime[counts++]=i;
+        for(j=0; j<counts; j++)
+        {
+            if(i*prime[j]>Max)
+                break;
+            prim[i*prime[j]]=0;
+            if(i%prime[j]==0)
+                break;
+        }
+    }
+}
+int main()
+{
+    int n,i;
+    LL x;//必须用long long 不然会爆int
+    prim_from();
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        scanf("%lld",&x);
+        double t=sqrt(x);
+        int t1=sqrt(x);
+       // printf("%f %d",t,t1);
+        if((t-t1)<=1e-9 && prim[t1])//&&前面 确保输入来的数，开根号是一个整数 &&后面判断是否是素数
+            printf("YES\n");
+        else
+            printf("NO\n");
+    }
+    return 0;
+}
+写一个函数，输入一行字符，将此字符串中最长的单词输出。
+程序的运行示例如下：
+输入一行文本：I am a student.
+
+最长的单词是：student
+#include <stdio.h>
+#include <string.h>
+void longword(char s[], char t[]);                 //定义最长单词函数
+int main()
+{
+    char str[30], lg[20];
+    printf("输入一行文本：");
+    gets(str);   
+	printf("\n");      
+	printf("\n");                             //输入一行字符
+    longword(str, lg);              
+	printf("最长的单词是：");               //调用最长单词函数
+    puts(lg);                                      //输出最长单词
+    return 0;
+}
+//最长单词函数
+void longword(char s[], char t[])
+{
+    int i, j, n, k, m, word;
+    char p[20];
+    n=strlen(s);
+    m=0;
+    word=0;
+    for (i=0, j=0, k=0; i<=n; i++){
+        if ((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')){
+            word=1;
+            p[j++]=s[i];
+        }
+        else if (word==1){
+            if (j>k){
+                for (m=0; m<j; m++)
+                    t[m]=p[m];
+                t[m]='\0';
+                k=j;
+            }
+            word=0;
+            j=0;
+        }
+    }
+}
+Two Bags of Potatoes
+time limit per test1 second
+memory limit per test256 megabytes
+inputstandard input
+outputstandard output
+Valera had two bags of potatoes, the first of these bags contains x (x≥1)
+potatoes, and the second — y (y≥1) potatoes. Valera — very scattered
+boy, so the first bag of potatoes (it contains x potatoes) Valera lost.
+Valera remembers that the total amount of potatoes (x+y) in the two bags,
+firstly, was not gerater than n, and, secondly, was divisible by k.
+Help Valera to determine how many potatoes could be in the first bag.
+Print all such possible numbers in ascending order.
+Input
+The first line of input contains three integers y, k, n (1≤y,k,n≤10^9;
+n/k≤10^5).
+Output
+Print the list of whitespace-separated integers — all possible values
+of x in ascending order. You should print each possible value of x exactly
+once. If there are no such values of x print a single integer -1.
+
+
+#include <stdio.h>
+
+
+ 
+int main() 
+{
+	int y,n,k,i;
+	scanf("%d %d %d",&y,&k,&n);
+	for(i=(y/k+1)*k;i<=n;i+=k)
+	{
+		printf("%d ",i-y);
+	}
+	if((y/k+1)*k>n)
+	{
+		printf("-1");
+	}
+	return 0;
+}
+
+请安如下函数编程实现将一个字符串内所有的小写字母转换成大写字母，字符串由大、小写英文字母、数字、空格等构成。
+函数原型：
+void Change(char string[])
+输入提示信息："please input a string:"
+输出提示信息及格式："changed string is %s\n"
+<友情提示>
+小写字母和大写字母的ASCII码值之间的差是32
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char a[1000],i,l;
+	printf("please input a string:");
+	gets(a);
+	l=strlen(a);
+	for(i=0;i<l;i++)
+	{
+		if(a[i]>='a' && a[i]<='z')
+		 a[i]=a[i]-'a'+'A';
+		
+	}
+	printf("changed string is %s\n",a);
+	return 0;
+ } 
+从键盘输入1行字符串（每行最多输入80个字符），
+统计字符串中所包含的各个英文小写字符及其对应的数量。
+**输入格式要求：不要有任何提示信息，直接输入1行字符。
+**输出格式要求：按字母顺序输出统计结果，"%c=%d\n"
+每行输出一个字母的统计信息。
+如果某个字母没有出现，则不输出该字母的统计信息。
+如：输入字符串： 
+abc2ed a7bcdcd
+则输出：
+a=2
+b=2
+c=3
+d=3
+e=1
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char a[1000];
+	int i,l,b[30];
+	
+	gets(a);
+	l=strlen(a);
+	for(i=0;i<26;i++) b[i]=0;
+	for(i=0;i<l;i++)
+	{
+		if(a[i]>='a' && a[i]<='z')
+		 b[a[i]-'a']++;
+		
+	}
+	for(i=0;i<26;i++)
+	if(b[i]>0)printf("%c=%d\n",'a'+i,b[i]);
+	return 0;
+ } 
+数组旋转：
+编写程序将如下的一个固定大小的整数数组a[2][3]向右旋转90度，构成新的数组b[3][2]，并打印出来。
+例如：a=1 2 3
+        4 5 6
+旋转后
+b=4 1
+  5 2
+  6 3
+**输入提示信息："Array a:\n"
+**输入格式要求："%d"
+**输出格式要求： "Array b:\n" 
+输出时每个元素的大小为"%4d"
+程序运行示例如下：
+Array a:
+   1 2 3
+   4 5 6
+Array b:
+4   1
+5   2
+6   3
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int i,j,a,b[100][100];
+	printf("Array a:\n");
+	for(i=0;i<2;i++)
+	for(j=0;j<3;j++)
+	{
+	scanf("%d",&a);
+	b[j][i]=a;	
+	}
+	printf("Array b:\n");
+	for(i=0;i<3;i++)
+	{
+	for(j=1;j>=0;j--)
+	{
+	 printf("%4d",b[i][j]);	
+	}	
+	printf("\n");
+	}
+	
+	
+	return 0;
+ } 
+某人三天打渔两天晒网，假设他从1990年1月1日开始打渔三天，然后晒网两天，请编程回答任意的一天他在打渔还是晒网。
+A boy works for 3 days while has a 2 days off. If he is working on 1st, Jan, 1990, then for a date entered from the keyboard, please write a program to determine what the boy is doing, working or resting?
+Examples of input and output:
+1)Input:
+1990-01-05
+Output:
+He is having a rest.
+2)Input:
+1990-01-07
+Output:
+He is working.
+3)Input:
+1990-01-33
+Output:
+Invalid input.
+***输入数据格式***："%4d-%2d-%2d"
+***输出数据格式***："Invalid input."或"He is having a rest." 或"He is working."
+#include<stdio.h>
+int count_Days(int y,int m,int d);
+int main()
+{
+    int s,year,month,day;
+    scanf("%4d-%2d-%2d",&year,&month,&day);
+    if(year<1990)
+    {
+        printf("Invalid input.");
+    }
+    else if(month>12||month<0)
+    {
+        printf("Invalid input.");
+    }
+    else if(day>31||day<0)
+    {
+        printf("Invalid input.");
+    }
+    else if(month==2)
+    {
+     if((year%4==0&&year%100!=0)||year%400==0)
+      {
+       if(day>29)
+        printf("Invalid input.");
+   }
+  else if(day>28)
+   printf("Invalid input.");     
+ }
+    else{
+    s=count_Days(year,month,day);
+    switch(s)
+    {
+  case 0:printf("He is having a rest.");break;
+        case 1:printf( "He is working.");break;
+        default:break;
+    }
+    return 0;
+    }
+}
+int count_Days(int y,int m,int d)
+{
+    int d1=0,d2=0,d3=0,year=365,sum=0,i,n,r;
+    int a[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+    if((y%4==0&&y%100!=0)||y%400==0)
+    {
+        a[2]=29;
+    }
+    for(r=1990,n=0;r<y;r++)//判断有多少个闰年 
+ {
+  if((r%4==0&&r%100!=0)||r%400==0)
+   n++;
+ }     
+    d1=(y-1990)*year+n;
+    for(i=0;i<m;i++)
+    {
+        d2+=a[i];
+    }
+    d3=d;
+    sum=d1+d2+d3;
+    if(sum%5<=3&&sum%5>0)
+        return 1;
+    else
+        return 0;
+} 
+输入一个字符串保存到数组str中，将str中的数字字符存储到数组tOrigin中，并将其转换为整数输出，用k记录字符串中数字字符的个数。例如：用户输入字符串1243abc3,则将12433取出以整数形式输出。阅读程序，找出其中的错误，并改正之（允许改变数据类型）。
+
+#include <math.h>
+#include <stdio.h>
+
+void fun(char *s, char *t, int k)
+{
+    int i;
+    k = 0;
+    for (i = 0; s[i]; i++)
+        if (0 <= s[i] && s[I] <= 9)
+        {
+            t[*k] = s[i];
+            *k += 1;
+        }
+}
+void main()
+{
+    char str[100], tOrigin[9];
+    long int n;
+    int i, k;
+    printf("Please enter string s:");
+    scanf("%s", str);
+    fun(str, tOrigin, &k);
+    for (i = 0; i < k; i++)
+        n += (tOrigin [k - 1 - i] - '0') * pow(10, i);
+    printf("The result is: %d", n);
+}
+输入一个字符串保存到数组str中，将str中的数字字符存储到数组tOrigin中，并将其转换为整数输出，用k记录字符串中数字字符的个数。例如：用户输入字符串1243abc3,则将12433取出以整数形式输出。阅读程序，找出其中的错误，并改正之（允许改变数据类型）。
+
+
+
+
+用指针编程实现3X4的二维数组的元素读入以及求此二维数组的最大值及最大值下标 
+请用以下函数实现：
+void Input(int *p,int m, int n);  /*数组元素读入函数*/
+int FindMax(int *p, int m, int n, int *pRow, int *pCol);  /*求最大值及下标函数*/
+
+若存在若干个相同最大元素，则按照第一次出现的最大值的下标输出。
+
+***输入提示信息："Please input your data:\n"
+***输入格式要求：无格式要求
+***输出格式要求："The maximum is %d, which is in row %d, colum %d\n"
+
+
+样例：
+
+Please input your data:
+**输入样例：
+3 5 2 7 1 6 12 11 4 10 8 9
+**输出样例：
+The maximum is 12, which is in row 1, colum 2
+
+#include <stdio.h>
+#define M 3
+#define N 4
+void Input(int (*p)[4], int m, int n);
+int FindMax(int (*p)[4], int m, int n, int *pRow, int *pCol);
+main()
+{                   
+    int score[M][N], maxScore, row, col;
+    printf("Please input your data:\n");
+    Input(score, M, N);
+    maxScore = FindMax(score, M, N, &row, &col);
+    printf("The maximum is %d, which is in row %d, colum %d\n", maxScore, row, col);
+}                   
+void Input(int (*p)[4], int m, int n)
+{                   
+    int i, j;
+    for (i = 0; i < m; i++)
+    {                   
+        for (j = 0; j < n; j++)
+            scanf("%d", (p[i] + j));
+    }
+}                   
+int FindMax( int (*p)[4], int m, int n, int *pRow, int *pCol )
+{                   
+    int  i, j, max;
+    max = *(p[0]);
+    *pRow = 0;
+    *pCol = 0;
+    for (i = 0; i < m; i++)
+    {                   
+        for (j = 0; j < n; j++)
+        {                   
+            if ( *(p[i] + j) > max )
+            {                   
+                max = *(p[i] + j) ;
+                *pRow = i;
+                *pCol = j;
+            }
+        }
+    }
+    return max;
+}
+对输入的字符串进行长度验证，保证输入的字符串的长度在指定的范围内，如果不在指定的范围内，则一直提示用户输入，直到输入合法长度的字符串为止。
+程序的示例运行如下：
+请输入一个字符串(长度为[3..5]个字符)：a
+请输入一个字符串(长度为[3..5]个字符)：ab
+请输入一个字符串(长度为[3..5]个字符)：abcdef
+请输入一个字符串(长度为[3..5]个字符)：abc
+你输入的字符串为：abc 
+#include<stdio.h>
+#include<string.h> 
+int main()
+{
+	int l=1;
+	char a[1000];
+	while(l<3 || l>5)
+	{
+		printf("请输入一个字符串(长度为[3..5]个字符)：");
+		gets(a);
+		printf("\n");
+		l=strlen(a);
+	}
+    printf("你输入的字符串为：%s",a);
+    return 0;
+}
+程序改错。
+以下程序的功能是统计字符数。判断一个由’0’ ~ ‘9’这10个字符组成的字符串中哪个字符出现的次数最多。
+输入数据：第一行是测试数据的组数m，每组测试数据占1行，每行数据不超过1000个字符且非空。
+输出要求：m行，每行对应一组输入，包括出现次数最多的字符和该字符出现的次数。如果有多个字符出现的次数相同且最多，那么输出ASCII码最小的那一个。
+#include <stdio.h>
+#include <string.h>
+main( )
+{
+int  cases, sum[10], i, max;
+  char str[1000];                          
+    scanf("%d", case);                    
+  while (cases > 0)
+       {
+                scanf("%c", str);
+            for( i = 0; i < 10; i++)
+                 sum[i] = 0; 
+                    for(i < 0; i < strlen(str); i++)
+                ++sum[str[i] – 0];
+            max = 0;   
+            for (i = 1; i < 10; i++)
+                if(sum[i] >＝ sum[max]) max = i;
+            printf("%c %d\n", max + '0', sum[0]);
+            cases --;
+       }
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    int  cases, sum[10], i, max;
+    char str[1000];
+    scanf("%d", &cases);
+    while (cases > 0)
+    {
+        scanf("%s", str);
+        for (i = 0; i < 10; i++)
+            sum[i] = 0;
+        for (i = 0; i < strlen(str); i++)
+        {
+            sum[str[i] - '0'] += 1;
+        }
+
+        max = 0;
+        int min;
+        for (i = 0; i < 10; i++)
+            if (sum[i] > sum[max])
+            {
+                max = i;
+            }
+        printf("%c %d\n",  max + '0', sum[max]);
+        cases--;
+    }
+}
+输入3个数x,y,z，按从小到大顺序排序后输出。
+要求：利用指针方法实现两数互换，函数原型为：void swap(int *p1,int *p2);
+输入提示：printf("please input 3 number x,y,z");
+输出格式：printf("the sorted numbers are:%d,%d,%d\n",  );
+#include <stdio.h>
+void swap(int *p1,int *p2)
+{
+    int t;
+    if(*p1>*p2)
+    {
+        t = *p1;
+        *p1 = *p2;
+        *p2 = t;
+    }
+}
+int main()
+{
+    int a,b,c;
+    printf("please input 3 number x,y,z");
+    scanf("%d,%d,%d",&a,&b,&c);
+    swap(&a,&b);
+    swap(&b,&c);
+    swap(&a,&b);
+    printf("the sorted numbers are:%d,%d,%d\n",a,b,c);
+    return 0;
+}
+编程计算a%1 + aa%2 + aaa%3 + ... + aa...a%n(最后一项是n个a对n求余)
+的值，然后输出这个值。
+（要求存储累加项及总和的变量定义为长整型,a与n定义为整型），
+其中n和a的值由键盘输入。
+**要求：
+**输入提示信息格式为："Enter n,a:\n"
+**输入格式为："%d,%d"
+**输出格式为："Sum=%ld\n"
+**请严格按照以上要求输入输出，除了以上指定输出结果外，
+     不允许有其他临时输出
+#include <stdio.h>
+long fun(int a,int n)
+{
+int i;
+long t=a,r=0;
+for(i=1;i<=n;i++)
+{
+r+=t%i;
+t=t*10+a;
+}
+return r;
+}
+int main()
+{
+	int a,n;
+    printf("Enter n,a:\n");
+    scanf("%d,%d",&n,&a);
+    printf("Sum=%ld\n",fun(a,n));
+    return 0;
+}
+利用一个字符数组作函数参数,实现字符串（最大长度为80个字符 ）的逆序存放。
+要求如下：
+(1)在子函数Inverse中实现字符串的逆序存放。函数原型为：
+     void Inverse(char str[]);
+(2)在主函数中
+     从键盘输入字符串(使用gets函数)      
+     然后，调用Inverse函数，
+     最后，输出逆序后的字符串。
+(3)**输入提示信息："Input a string:\n"
+   **输出提示信息："Inversed results:\n"
+   **输出格式："%s\n"
+#include<stdio.h>
+#include<string.h>
+#define N 80
+void Inverse(char str[]);
+main()
+{
+    char str[N];
+    printf("Input a string:\n");
+    gets(str);
+    Inverse(str);
+    printf("Inversed results:\n");
+    printf("%s\n",str);
+}
+void Inverse(char str[])
+{
+    int a = strlen(str), i;
+    char temp;
+    for(i = 0;i < a/2; i++)
+    {
+        temp = str[i];
+        str[i] = str[a - 1 - i];
+        str[a - 1 - i] = temp;
+    }
+}
+T-primes
+
+time limit per test2 seconds
+
+memory limit per test256 megabytes
+
+inputstandard input
+
+outputstandard output
+
+    We know that prime numbers are positive integers that have exactly two 
+
+distinct positive divisors. Similarly, we'll call a positive integer t Т-prime, 
+
+if t has exactly three distinct positive divisors.
+
+You are given an array of n positive integers. For each of them determine
+
+  whether it is Т-prime or not.
+
+Input
+
+The first line contains a single positive integer, n (1≤n≤10^5), showing
+
+how many numbers are in the array. The next line contains n space-separated
+
+integers xi (1≤xi≤10^12).
+
+Please, do not use the %lld specifier to read or write 64bit integers in С++. It is advised to use the cin, cout streams or the %I64d specifier.
+
+Output
+
+Print n lines: the i-th line should contain "YES" (without the quotes), if
+
+number xi is Т-prime, and "NO" (without the quotes), if it isn't.
+
+Sample test(s)
+
+input
+
+3
+
+4 5 6
+
+output
+
+YES
+
+NO
+
+NO
+
+Note
+
+The given test has three numbers. The first number 4 has exactly three di
+
+visors — 1, 2 and 4, thus the answer for this number is "YES". The second 
+
+number 5 has two divisors (1 and 5), and the third number 6 has four divi
+
+sors (1, 2, 3, 6), hence the answer for them is "NO".
+
+# include <stdio.h>
+# include <math.h>
+# define MAXN 1000000
+int p[MAXN+1]={1,1};
+int main()
+{
+    int i, j, t;
+    long long n;
+    double temp;
+    for(i=2; i<=MAXN; ++i)
+        if(!p[i])
+        for(j=i+i; j<=MAXN; j+=i)
+            p[j] = 1;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%I64d", &n);
+        temp = sqrt(n);
+        if(temp == (int)temp && !p[(int)temp])
+            puts("YES");
+        else
+            puts("NO");
+
+    }
+    return 0;
+}
+写一个函数，将一个字符串中的元音字母复制到另一个字符串，然后输出。
+程序的运行示例如下：
+提示信息："\n输入字符串："  
+字符串中的元音字母是eoo
+ ***输入数据格式***：使用gets() 
+ ***输出数据格式***："\n字符串中的元音字母是%s"
+程序运行示例：
+输入字符串：Hello,world!↙
+Hello,world!
+字符串中的元音字母是eoo
+#include <stdio.h>
+#include <string.h>
+void input(char st[]);                            //定义输入函数
+void output(char st[]);                           //定义输出函数
+void letter(char x[], char y[]);                  //定义元音复制函数
+int main()
+{
+    char s1[20], s2[10];
+    input(s1);                                    //调用输入函数
+    letter(s1, s2);                               //调用元音复制函数
+    output(s2);                                   //调用输出函数
+    return 0;
+}
+//输入函数
+void input(char st[])
+{
+    printf("\n输入字符串：");
+    gets(st);
+    printf("%s",st);
+}
+//元音复制函数
+void letter(char x[], char y[])
+{
+    int n=strlen(x),i,j;
+    for (i=0, j=0; i<n; (x[i]=='a'||x[i]=='e'||x[i]=='i'||x[i]=='o'||x[i]=='u'||x[i]=='A'||x[i]=='E'||x[i]=='I'||x[i]=='O'||x[i]=='U') ? y[j++]=x[i++] : i++);
+    y[j]='\0';
+}
+//输出函数
+void output(char st[])
+{
+    printf("\n字符串中的元音字母是%s", st);
+}
+输入一个英文句子(输入句子以回车作为结束,句子长度包括标点符号并且不超过20)，翻转句子中单词的顺序，但单词内字符的顺序不变。标点符号和普通字母一样处理。例如输入字符串“I am a student.”，则输出“student.a am I”
+输入提示信息：Input Sentence:
+输出提示信息：Output Reverse Sentence:
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+ char s[101];
+ int i,j,len,z,p=1;
+ printf("Input Sentence:");
+ while(gets(s))
+ {
+  if(p) printf("Output Reverse Sentence:"); 
+  p=0;
+ len=strlen(s);
+ j=len-1;
+ for (i=len-1;i>=0;i--)
+ {
+ if (s[i]==' ')
+ {
+ for (z=i+1;z<=j;z++)
+ printf("%c",s[z]);
+ printf("%c",s[i]);
+ j=i-1;
+ }
+ }
+ if (i<0)
+ {for (z=0;z<=j;z++)
+printf("%c",s[z]);}
+ printf("\n");
+}
+return 0;
+}
+输入2个学生5门课的成绩，分别用函数求：（1）每个学生的平均分；（2）每门课的平均分；（3）找出最高的分数所对应的学生和课程；（4）求出平均分方差：
+
+(1/n)(∑xi2) - （（∑xi）/ n）2
+
+ 输入格式和提示信息：
+
+"\n输入学生%4d的5个成绩：\n"
+
+"%f"
+
+输出格式和提示信息：
+
+"\n 序号     课程1     2     3     4     5     平均分\n"
+
+"\n NO%2d"
+
+"%8.2f"
+
+
+
+"\n课平均"
+
+"%8.2f"
+
+
+
+"\n\n最高分%8.2f是%d号学生的第%d门课\n"
+
+"\n方差 %8.2f"                                               
+#include<stdio.h>
+#define N 2
+#define M 5
+float score[N][M];
+float a_stu[N],a_cor[M];
+int main(void)
+{
+  int i,j,r,c;
+  float h;
+  float s_diff(void);
+  float highest(int *,int *);
+  r=0;
+  c=1;
+  input_stu();
+  avr_stu();
+  avr_cor();
+  printf("\n 序号     课程1     2     3     4     5     平均分\n");
+  for(i=0;i < N; i++)     {         printf("\n NO%2d", i + 1);         for (j = 0; j < M; j++)         {             printf("%8.2f", score[i][j]);         }         printf("%8.2f", a_stu[i]);     }       printf("\n课平均");     for (j = 0; j < M; j++)     {         printf("%8.2f", a_cor[j]); 
+    }     h = highest(&r, &c);     printf("\n\n最高分%8.2f是%d号学生的第%d门课\n", h, r, c);     printf("\n方差 %8.2f", s_diff());       return 0; }   input_stu(void) {     int i, j;       for (i = 0; i < N; i++)     {         printf("\n输入学生%4d的5个成绩：\n", i + 1);         for (j = 0; j < M; j++)         {             scanf("%f", &score[i][j]);         }     } }   avr_stu(void) {     int i, j;     float s;       for (i = 0; i < N; i++)     {         for (j = 0, s = 0; j < M; j++)         {             s += score[i][j];         }         a_stu[i] = s / 5.0;     } }   avr_cor(void) {     int i, j;     float s;       for (j = 0; j < M; j++)     { 
+        s = 0;         for (i = 0; i < N; i++)         {             s += score[i][j];         }         a_cor[j] = s / (float)N;     } }   float highest(int *r, int *c) {     float high;     int i, j;       high = score[0][0];     for (i = 0; i < N; i++)     {         for (j = 0; j < M; j++)         {             if (score[i][j] > high)             {                 high = score[i][j];                 *r = i + 1;                 *c = j + 1;             }         }     }     return high; }   float s_diff(void) {     int i, j;     float sumx, sumxn;       sumx = 0.0;     sumxn = 0.0;       for (i = 0; i < N; i++)     {         sumx += a_stu[i] * a_stu[i];         sumxn += a_stu[i];     }     return (sumx / N - (sumxn / N) * (sumxn / N)); 
+} 
+某班期末考试科目为数学（MT）、英语（EN）和物理（PH），有最多不超过40人参加考试。请编程计算：（1）每个学生的总分和平均分；（2）每门课程的总分和平均分。
+**输入格式要求："%d" "%ld"(学号) 提示信息："Input the total number of the students(n<40):" "Input student’s ID and score as: MT  EN  PH:\n"
+**输出格式要求："Counting Result:\n" "Student’s ID\t  MT \t  EN \t  PH \t SUM \t AVER\n" "%12ld\t"(打印学号) "%4d\t"（打印每门课成绩）"%4d\t%5.1f\n"（打印总分和平均分） "SumofCourse \t" "%4d\t"(打印每门课的总分) "\nAverofCourse\t" "%4.1f\t"(每门课的平均分) 
+程序的运行示例如下：
+Input the total number of the students(n<=40):4
+Input student’s ID and score as: MT  EN  PH:
+070310122  97  87  92
+070310123  92  91  90
+070310124  90  81  82
+070310125  73  65  80
+Counting Result:
+Student’s ID    MT	EN	PH	SUM	AVER
+070310122	97	87	92	276	92.0
+070310123	92	91	90	273	91.0
+070310124	90	81	82	253	84.3
+070310125	73	65	80	218	72.7
+SumofCourse	352	324	344		
+AverofCourse	88.0	81.0	86.0
+ 
+#include <stdio.h>
+#include <stdlib.h>
+
+#define   MAX_LEN  9                	/* 字符串最大长度 */
+#define   STU_NUM 40                       /* 最多的学生人数 */
+
+void  ReadScore(long num[],int score[][3],int n);//录入信息
+void  Course(int Coursesum[3],float Courseaver[3],int score[][3],int n);//计算课程总分与平均分
+void  Student(int Studentsum[STU_NUM],float Studentaver[STU_NUM],int score[][3],int n);//计算学生总分与平均分
+
+int main()
+{
+    int n,i,k,g,t,score[STU_NUM][3],Coursesum[3],Studentsum[STU_NUM];
+    long num[STU_NUM];
+    float Courseaver[3],Studentaver[STU_NUM];
+    printf("Input the total number of the students(n<40):");
+    scanf("%d",&n);
+    ReadScore(num,score,n);
+    Course(Coursesum,Courseaver,score,n);
+    Student(Studentsum,Studentaver,score,n);
+    printf("Counting Result:\n");
+    printf("Student’s ID\t  MT \t  EN \t  PH \t SUM \t AVER\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%12ld\t",num[i]);
+        for(k=0;k<3;k++)
+        {
+            printf("%4d\t",score[i][k]);
+        }
+        printf("%4d\t%5.1f\n",Studentsum[i],Studentaver[i]);
+    }
+    printf( "SumofCourse \t");
+    for(t=0;t<3;t++)
+    {
+        printf("%4d\t",Coursesum[t]);
+    }
+    printf("\nAverofCourse\t");
+    for(g=0;g<3;g++)
+    {
+        printf("%4.1f\t",Courseaver[g]);
+    }
+    return 0;
+}
+
+void  ReadScore(long num[],int score[][3],int n)
+{
+    int i,k;
+    printf("Input student’s ID and score as: MT  EN  PH:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%ld",&num[i]);
+        getchar();
+        for(k=0;k<3;k++)
+        {
+            scanf("%d",&score[i][k]);
+            getchar();
+        }
+    }
+}
+
+void  Course(int Coursesum[3],float Courseaver[3],int score[][3],int n)
+{
+    int s,i,k;
+    for(k=0;k<3;k++)
+    {
+        s=0;
+        for(i=0;i<n;i++)
+        {
+           s+=score[i][k];
+        }
+        Coursesum[k]=s;
+        Courseaver[k]=s/n;
+    }
+}
+
+void  Student(int Studentsum[STU_NUM],float Studentaver[STU_NUM],int score[][3],int n)
+{
+    int i,k,s;
+    for(i=0;i<n;i++)
+    {
+        s=0;
+        for(k=0;k<3;k++)
+        {
+            s+=score[i][k];
+        }
+        Studentsum[i]=s;
+        Studentaver[i]=(float)s/3;
+    }
+}
+
+Two Bags of Potatoes
+time limit per test1 second
+memory limit per test256 megabytes
+inputstandard input
+outputstandard output
+Valera had two bags of potatoes, the first of these bags contains x (x≥1)
+potatoes, and the second — y (y≥1) potatoes. Valera — very scattered
+boy, so the first bag of potatoes (it contains x potatoes) Valera lost.
+Valera remembers that the total amount of potatoes (x+y) in the two bags,
+firstly, was not gerater than n, and, secondly, was divisible by k.
+Help Valera to determine how many potatoes could be in the first bag.
+Print all such possible numbers in ascending order.
+Input
+The first line of input contains three integers y, k, n (1≤y,k,n≤10^9;
+n/k≤10^5).
+Output
+Print the list of whitespace-separated integers — all possible values
+of x in ascending order. You should print each possible value of x exactly
+once. If there are no such values of x print a single integer -1.
+ 
+#include<stdio.h>
+
+int main() 
+{
+    int y,n,k,i;
+
+    while(scanf("%d%d%d",&y,&k,&n)!=EOF) 
+{
+        int flag=0; 
+for(i=k;i<=n;i+=k) 
+{
+            if(i>y) 
+{
+                printf("%d ",i-y);
+                flag=1;
+            }
+
+        }
+        if(flag==0)
+        {
+            printf("-1");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+反向输出一个链表（共5个整型元素）。
+程序运行示例如下：
+please input 5 data==>
+1 2 3 4 5
+The value is ==>5
+The value is ==>4
+The value is ==>3
+The value is ==>2
+The value is ==>1
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct link
+{
+    int data;
+    struct link *next;
+}LINK;
+LINK *add(LINK *head,int n);
+void reverse(LINK *p);
+int main()
+{
+    LINK *head=NULL,*p;
+    int i,n;
+    printf("\n");
+    printf("please input 5 data==>\n");
+    for(i=0;i<5;i++)
+    {
+        scanf("%d",&n);
+        head=add(head,n);
+    }
+    reverse(head);
+}
+LINK *add(LINK *head,int n)     //创建链表
+{
+    LINK *p,*pr;
+    p=(LINK *)malloc(sizeof(LINK));
+    if(p==NULL)
+    {
+        printf("no enough momery");
+        exit(0);
+    }
+    pr=head;
+    if(head==NULL)
+    {
+        head=p;
+    }
+    else
+    {
+        while(pr->next!=NULL)
+        {
+            pr=pr->next;
+        }
+        pr->next=p;
+    }
+    p->next=NULL;
+    p->data=n;
+    return head;
+}
+void reverse(LINK *p)        //逆序输出链表中的元素
+{
+    if(p->next!=NULL)
+    {
+        reverse(p->next);
+    }
+    printf("The value is ==>%d\n",p->data);
+}
+给定如下定义：
+struct date_rec
+  {
+    int day ;
+    int month ;
+    int year ;
+  } ;
+  struct date_rec current_date ;
+写一个程序包含如下的函数，完成：
+(a) 输入current_date的值：
+void input_date(struct date_rec *current_date)
+(b) 将current_date增加1天：
+void increment_date(struct date_rec *current_date)
+(c) 显示current_date的值：
+void output_date(struct date_rec *current_date)
+考虑每个月的实际天数，同时也考虑闰年的情况。
+
+**输入格式要求："%d%d%d" 提示信息："请输入当前日期（年 月 日）："
+**输出格式要求："当前日期：%d年%d月%d日！" （加1天后的新日期）
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+
+int month[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+struct date_rec
+{
+	int year;
+	int month;
+	int day;
+};
+
+void input_date(struct date_rec* current_date)
+{
+	printf("请输入当前日期（年 月 日）：");
+	scanf("%d%d%d", &current_date->year, &current_date->month, &current_date->day);
+}
+void increment_date(struct date_rec* current_date)
+{
+	if (Isleap(current_date->year))    //判断是否闰年
+		month[1] = 29;
+	else
+		month[1] = 28;
+	current_date->day++;
+	if (current_date->day > month[current_date->month - 1])   //天数加一后超出了该月的总天数
+	{
+		current_date->day = 1;                //进位后日期为下月第一天
+		 current_date->month++;            //定位到下个月
+	} 
+	if (current_date->month > 12)           //如果月数超出一年12个月
+	{
+		current_date->month = 1;            //进位到下一年的一月
+		 current_date->year++;
+	}
+}
+void output_date(struct date_rec* current_date)
+{
+	printf("当前日期：%d年%d月%d日！", current_date->year, current_date->month, current_date->day);
+}
+int Isleap(int year)
+{
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+		return 1;
+	else
+		return 0;
+}
+int main()
+{
+	struct date_rec current_date;
+	input_date(&current_date);
+	increment_date(&current_date);
+	output_date(&current_date);
+}
+程序改错-3
+从键盘任意输入两个符号各异的整数，直到输入的两个整数满足要求为止，然后打印这两个数。请通过测试找出下面这个程序存在的问题（不止一个问题哦），并改正。同时用下面给出的运行结果示例检查修改后的程序。
+#include <stdio.h>
+int main()
+{
+    int x1, x2;
+    do
+    {
+        printf("Input x1, x2:");
+        scanf("%d,%d", &x1, &x2);
+    }
+    while (x1 * x2 > 0);
+    printf("x1=%d,x2=%d\n", x1, x2);
+    return 0;
+}
+
+程序正确的运行结果示例：
+Input x1, x2:
+a,s↙
+Input x1, x2:
+a,1↙
+Input x1, x2:
+2,s↙
+Input x1, x2:
+1,2↙
+Input x1, x2:
+-1,-2↙
+Input x1, x2:
+0,3↙
+Input x1, x2:
+1.2,3.4↙
+Input x1, x2:
+1.2,5↙
+Input x1, x2:
+-1,3↙
+x1=-1,x2=3
+
+输入格式: "%d,%d"
+输入提示信息："Input x1, x2:\n"
+输出格式："x1=%d,x2=%d\n"
+#include <stdio.h>
+
+int main()
+
+{ 
+
+int x1, x2, n, flag;
+
+
+do
+{ 
+flag = 0;
+printf("Input x1, x2:\n");
+
+n = scanf("%d,%d", &x1, &x2);
+
+switch (n)
+{ 
+case 0:
+while (getchar() != '\n');
+
+flag = 1;
+break;
+case 1:
+while (getchar() != '\n');
+flag = 1;
+break;
+default:
+if (x1 * x2 >= 0)
+flag = 1;
+else
+flag = 0;
+
+break;
+
+}
+
+}
+while (flag == 1);
+
+printf("x1=%d,x2=%d\n", x1, x2);
+
+return 0;
+
+} 
+按如下函数原型，用二维数组作为函数参数，编程计算并输出n×n阶矩阵的转置矩阵。
+其中，n由用户从键盘输入。已知n值不超过10。
+void Transpose(int a[][N], int n);
+void InputMatrix(int a[][N], int n);
+void PrintMatrix(int a[][N], int n);
+**输入提示信息要求："Input n:\n" "Input %d*%d matrix:\n"
+**输入格式："%d"
+**输出提示信息："The transposed matrix is:\n"
+**输出要求："%d\t"
+            输出矩阵时，每输出一行就换行
+注：不能使用指针、结构体、共用体、文件、goto、枚举类型进行编程。
+#include <stdio.h>
+#define N 10
+void Transpose(int a[][N], int n);
+void InputMatrix(int a[][N], int n);
+void PrintMatrix(int a[][N], int n);
+main() 
+{                      
+int s[N][N], n;
+printf("Input n:\n");
+scanf("%d", &n);
+InputMatrix(s, n);//1
+Transpose(s, n);//1
+printf("The transposed matrix is:\n");
+PrintMatrix(s, n);//1
+}                      
+void Transpose(int a[][N], int n) 
+{                      
+int i, j, temp;
+for (i = 0; i < n; i++) //1
+{                      
+    for (j = i; j < n; j++)//1 
+    {                      
+        temp = a[i][j];//1
+        a[i][j] = a[j][i];//1
+        a[j][i] = temp;//1
+    }
+}请用指针数组编程实现按奥运会参赛国的国名在字典中的
+}                      
+void InputMatrix(int a[][N], int n) {                      
+int i, j;
+printf("Input %d*%d matrix:\n", n, n);
+for (i = 0; i < n; i++) //1
+{                      
+    for (j = 0; j < n; j++)//1 
+    {                      
+        scanf("%d", &a[i][j]);//1
+    }
+}
+}                      
+void PrintMatrix(int a[][N], int n) 
+{                      
+int i, j;
+for (i = 0; i < n; i++) //1
+{                      
+    for (j = 0; j < n; j++) //1
+    {                      
+        printf("%d\t", a[i][j]);//1
+    }
+    printf("\n");//1
+}
+}
+超长正整数的加法
+   请设计一个算法完成两个超长正整数的加法。
+**输出格式要求："   s1="  "   s2=" "s1+s2="
+程序运行示例如下：
+3488934387589
+374849389
+   s1=3488934387589
+   s2=374849389
+s1+s2=3489309236978
+
+#include <stdio.h>
+#include <string.h>
+#define LENGTH  81
+void reverse(char s[])
+{
+	int i,j,c;;
+	for(i=0,j=strlen(s)-1; i<j; i++,j--){
+		c = s[i];
+		s[i] = s[j];
+		s[j] = c;
+	}
+}
+void addLInt(char s1[], char s2[]);
+int main()
+{
+    char intstr1[LENGTH],intstr2[LENGTH];
+    scanf("%s %s",intstr1, intstr2);
+    printf("   s1=%s\n",intstr1);
+    printf("   s2=%s\n",intstr2);
+    addLInt(intstr1, intstr2);
+    printf("s1+s2=%s", intstr1);
+    return 0;
+}
+void addLInt(char s1[], char s2[])
+{
+	int i=0,tmp,c=0;
+	char s[LENGTH];
+	if(strlen(s1) < strlen(s2)){
+		strcpy(s, s1);
+		strcpy(s1,s2);
+		strcpy(s2,s);
+	}
+	 reverse(s1); 
+	reverse(s2);
+	while(s2[i] != '\0'){
+		tmp = s1[i]-'0' + s2[i]-'0' + c;
+		s1[i] = tmp%10 + '0';
+		c = tmp/10;
+		i++;
+	}
+	while(s1[i] != '\0' && c){
+		tmp = s1[i]-'0' + c;
+		s1[i] = tmp%10 + '0';
+		c = tmp/10;
+		i++;
+	}
+	if(c){ 
+		s1[i++] = c + '0';
+		s1[i] = '\0';
+	}
+	reverse(s1);
+}
+
+
+————————————————
+版权声明：本文为CSDN博主「大前端码农的自我修养」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/jiangguangchao/article/details/102800642
+
+
+#include<stdio.h>
+void main()
+{
+  int i,j,m=9,n=0,k,a[10],t,s;
+  for(i=0;i<10;i++)
+  {
+    scanf("%d",&k);
+    if(k%2) a[n++]=k;
+    else a[m--]=k;
+  }
+  for(i=0;i<n;i++)
+  { 
+    t=i;
+    for(j=i+1;j<n;j++)
+    if(a[t]>a[j])
+    t=j;
+    if(t!=i)
+    {
+      s=a[t];
+      a[t]=a[i];
+      a[i]=s;
+    }
+  }
+  for(i=n;i<9;i++)
+  {
+   t=i;
+   for(j=i+1;j<10;j++)
+   if(a[t]>a[j])
+   t=j;
+   if(t!=i)
+   {
+     s=a[t];
+     a[t]=a[i];
+     a[i]=s;
+   }
+  }
+  for(i=0;i<10;i++)
+  printf("%d ",a[i]);
+}
+计算1-1/2+1/3-1/4+...+1/99-1/100+...，直到最后一项的绝对值小于1e-4为止。
+**输出格式要求："sum = %f\n"
+#include<stdio.h>
+int main()
+{
+  int a=1;
+  double b=2.0;
+  double sum=1.0;
+  while(fabs(1.0/b)>=1e-4)
+  {
+      a=-a;
+      sum=sum+a*(1/b);
+      b++;
+   }
+  printf("sum = %f\n",sum);
+  return 0;
+}
