@@ -1,0 +1,20 @@
+Sat Sep 21 23:51:49 2024
+在1022周期 hear 从-30方向 听到了passto(23,24
+在1022周期 see ball距离我的Direction是-20,Distance是20,DirChng是1,Dischng是-2;
+player hfut1 2距离我的Direction是45,Distance是23,DirChng是0.5,DistChng是1,它的BodyDir是22和HeadDir是40;
+goal r距离我的Direction是12,Distance是20;
+Line r和我的角度是-30度
+在1022周期 hear 从-30方向 听到了passto(23,24
+在1022周期 see ball距离我的Direction是-20,Distance是20,DirChng是1,Dischng是-2);
+player hfut1 2距离我的Direction是45,Distance是23,DirChng是0.5,DistChng是1,它的BodyDir是22和HeadDir是40;
+goal r距离我的Direction是12,Distance是20;
+Line r和我的角度是-30度
+在2022周期 hear 从-10“pass方向 听到了ball”
+在2022周期 see palyer hfut2 8距离我的Direction是40,Distance是23,DirChng是1,DistChng是6,它的BodyDir是21和HeadDir是33;
+goal r距离我的Direction是15,Distance是30;
+f r t20是5 24
+在1022周期 hear 从-30方向 听到了passto(23,24
+在1022周期 see ball距离我的Direction是-20,Distance是20,DirChng是1,Dischng是-2);
+player hfut1 2距离我的Direction是45,Distance是23,DirChng是0.5,DistChng是1,它的BodyDir是22和HeadDir是40;
+goal r距离我的Direction是12,Distance是20;
+Line r和我的角度是-30度

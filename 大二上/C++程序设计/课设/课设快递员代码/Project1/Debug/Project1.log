@@ -1,0 +1,8 @@
+﻿  Courier.cpp
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.h(11,25): warning C4099: “Manage”: 类型名称以前使用“class”现在使用的是“struct”
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.h(7): message : 参见“Manage”的声明
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.h(38,1): warning C4099: “Manage”: 类型名称以前使用“class”现在使用的是“struct”
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.h(37): message : 参见“Manage”的声明
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.cpp(61,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Courier.cpp(77,20): warning C4018: “<”: 有符号/无符号不匹配
+  Project1.vcxproj -> D:\24581\文档\学校各科作业\大二上\C++程序设计\课设\课设快递员代码\Project1\Debug\Project1.exe

@@ -1,0 +1,8 @@
+﻿  third_homework.cpp
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(77,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(78,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(79,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(80,11): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(115,10): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\third_homework\third_homework.cpp(197): warning C4715: “getobj”: 不是所有的控件路径都返回值
+  third_homework.vcxproj -> E:\物联网专业课、课程设计资料\机器人技术\第三次作业\third_homework\x64\Debug\third_homework.exe
